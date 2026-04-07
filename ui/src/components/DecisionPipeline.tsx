@@ -264,7 +264,7 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
             className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 w-full sm:w-auto ${
               isSimulating
                 ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(37,99,235,0.25)] active:scale-95'
+                : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.25)] active:scale-95 animate-soft-pulse'
             }`}
           >
             {isSimulating ? <Loader2 size={14} className="animate-spin" /> : <Play size={14} />}

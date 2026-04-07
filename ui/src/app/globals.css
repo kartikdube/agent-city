@@ -55,7 +55,7 @@ body {
   scrollbar-width: none;
 }
 
-/* Scrollbars are hidden globally */
+/* Scrollbars are hidden globally for a clean aesthetic */
 
 @layer utilities {
   .safe-top {
@@ -67,5 +67,21 @@ body {
   .h-screen-dynamic {
     height: 100vh;
     height: 100dvh;
+  }
+  .animate-soft-pulse {
+    animation: soft-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes soft-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
   }
 }

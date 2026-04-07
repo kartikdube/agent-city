@@ -95,8 +95,8 @@ export default function Home() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-[1600px] mx-auto px-4 md:px-6 mt-4 md:mt-8 w-full overflow-hidden flex flex-col">
-        <div className="flex-1 flex flex-col overflow-hidden pr-2">
+      <main className="flex-1 min-h-0 max-w-[1600px] mx-auto px-4 md:px-6 mt-4 md:mt-8 w-full overflow-hidden flex flex-col">
+        <div className="flex-1 min-h-0 flex flex-col overflow-hidden pr-2">
         <AnimatePresence mode="wait">
           {activeTab === 'scenarios' ? (
             <motion.div
@@ -105,7 +105,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.5 }}
-              className="flex-1 overflow-y-auto custom-scrollbar"
+              className="flex-1 min-h-0 overflow-y-auto custom-scrollbar"
             >
               <ScenarioSelection onSelect={handleScenarioSelect} selectedId={selectedScenarioId} />
             </motion.div>
@@ -115,37 +115,41 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex-1 flex flex-col space-y-8 overflow-hidden"
+              className="flex-1 min-h-0 flex flex-col space-y-8 overflow-hidden"
             >
 
               {/* Sub-tabs for Setup */}
               <div className="flex-shrink-0 flex items-center justify-between border-b border-white/5 pb-1 gap-4">
-                <div className="flex items-center gap-4 md:gap-10 overflow-x-auto no-scrollbar">
+                <div className="flex-1 min-w-0 flex items-center gap-3 md:gap-10 overflow-x-auto no-scrollbar pr-2">
                   <SubTabButton 
                     active={activeSubTab === 'dashboard'} 
                     onClick={() => setActiveSubTab('dashboard')}
                     icon={<LayoutGrid size={18} />}
-                    label="City Dashboard"
+                    label="Dashboard"
+                    fullLabel="City Dashboard"
                   />
                   <SubTabButton 
                     active={activeSubTab === 'hierarchy'} 
                     onClick={() => setActiveSubTab('hierarchy')}
                     icon={<Users size={18} />}
-                    label="Agent Hierarchy"
+                    label="Hierarchy"
+                    fullLabel="Agent Hierarchy"
                   />
                   <SubTabButton 
                     active={activeSubTab === 'policy'} 
                     onClick={() => setActiveSubTab('policy')}
                     icon={<Terminal size={18} />}
-                    label="Policy Workbench"
+                    label="Workbench"
+                    fullLabel="Policy Workbench"
                   />
                 </div>
 
                 <button 
                   onClick={() => setActiveTab('conversations')}
-                  className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/20 hover:border-blue-500 transition-all font-bold text-[10px] md:text-xs uppercase tracking-widest whitespace-nowrap mb-1 shadow-[0_0_15px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                  className="flex-shrink-0 flex items-center gap-1.5 px-3 md:px-4 py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/20 hover:border-blue-500 transition-all font-bold text-[9px] md:text-xs uppercase tracking-widest whitespace-nowrap mb-1 shadow-[0_0_15px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
                 >
-                  Go to Simulation
+                  <span className="hidden sm:inline">Go to Simulation</span>
+                  <span className="sm:hidden">Simulation</span>
                   <ChevronRight size={14} />
                 </button>
               </div>
@@ -163,7 +167,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex-1 flex flex-col overflow-hidden"
+              className="flex-1 min-h-0 flex flex-col overflow-hidden"
             >
               <div className="flex-1 overflow-y-auto custom-scrollbar">
                 <DecisionPipeline scenarioData={scenarioData as any} />
@@ -194,15 +198,15 @@ const TabButton = ({ active, onClick, icon, label, disabled }: any) => (
   </button>
 );
 
-const SubTabButton = ({ active, onClick, icon, label }: any) => (
+const SubTabButton = ({ active, onClick, icon, label, fullLabel }: any) => (
   <button 
     onClick={onClick}
-    className={`flex items-center gap-2 pb-4 text-sm font-medium transition-all relative ${
+    className={`flex items-center gap-2 pb-4 text-xs md:text-sm font-medium transition-all relative shrink-0 ${
       active ? 'text-blue-400' : 'text-slate-500 hover:text-slate-300'
     }`}
   >
     {icon}
-    <span className="text-[10px] md:text-sm">{label}</span>
+    <span className="hidden md:inline min-w-max">{fullLabel || label}</span>
     {active && (
       <motion.div 
         layoutId="underline" 

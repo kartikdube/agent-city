@@ -43,7 +43,7 @@ export const HierarchyViewer = ({ government }: HierarchyViewerProps) => {
       {/* Tree */}
       <div className="xl:col-span-3 space-y-6 md:space-y-10">
         {/* President */}
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-6">
           {president && (
             <PresidentNode
               agent={president}
@@ -191,7 +191,7 @@ const PresidentNode = ({ agent, isSelected, onClick }: any) => {
           : 'bg-slate-800/40 border-amber-500/30 hover:border-amber-500/60'
       }`}
     >
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-amber-500 text-black font-black rounded-full text-[9px] uppercase tracking-widest">
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-amber-500 text-black font-black rounded-full text-[9px] uppercase tracking-widest whitespace-nowrap">
         Commander in Chief
       </div>
       <div className="h-10 w-10 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-black text-sm md:text-lg border border-amber-500/30">

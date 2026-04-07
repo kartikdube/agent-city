@@ -44,18 +44,18 @@ export const PolicyWorkbench = ({ city }: PolicyWorkbenchProps) => {
       {/* Column 1: Policy Definition */}
       <div className="space-y-6">
         <Card className="border-blue-500/20 bg-blue-500/[0.02] h-full flex flex-col">
-          <div className="flex justify-between items-start mb-6">
-            <div>
+          <div className="flex justify-between items-start mb-6 gap-4">
+            <div className="flex-1 min-w-0">
               <Badge variant="info" className="mb-2">Active Strategic Draft</Badge>
               <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">{SHARED_POLICY.title}</h2>
               <p className="text-sm text-slate-400 mt-2 leading-relaxed">{SHARED_POLICY.summary}</p>
             </div>
-            <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-400 shadow-[0_0_15px_rgba(56,189,248,0.1)]">
+            <div className="flex-shrink-0 p-3 rounded-2xl bg-blue-500/10 text-blue-400 shadow-[0_0_15px_rgba(56,189,248,0.1)]">
                <ShieldCheck size={28} />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
              <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 shadow-inner">
                 <p className="text-[10px] uppercase font-black text-slate-500 mb-1.5 flex items-center gap-2">
                   <TrendingDown size={12} className="text-emerald-500" /> Allocated Budget
