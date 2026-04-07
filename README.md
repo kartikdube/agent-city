@@ -1,6 +1,5 @@
 # AgentCity Labs - Operations Center 🏙️🤖
 
-
 > **AgentCity** is a dynamic, multi-agent simulation dashboard that allows users to model complex urban scenarios and observe how different governance styles (e.g., *People Pleasers*, *Fiscal Hawks*, *Power Players*, *Technocrats*) influence city-level metrics like traffic, budget, approval ratings, and housing.
 
 Built with an immersive "Cyber-Industrial" aesthetic and an intuitive Next.js frontend, AgentCity simulates a sequential behavioral pipeline of AI agents evaluating a given city policy.
@@ -17,8 +16,9 @@ Built with an immersive "Cyber-Industrial" aesthetic and an intuitive Next.js fr
 ## 🌐 Deployment (Static Demo vs. Local AI)
 
 **This repository exists in two primary states:**
+
 1. **[Static Demo (gh-pages)](https://github.com/kartikdube/agent-city/tree/static-demo)**: The currently deployed GitHub Pages version is a highly optimized, fully static demo. It replays pre-saved scenario data to simulate AI behavioral output without requiring a heavy GPU or live backend, ensuring 100% up-time and high compatibility across browsers.
-2. **Local Live AI (`main` branch)**: By running the repository locally via `main`, the dashboard dynamically interfaces directly with local LLMs (e.g., Ollama) hosted on `http://localhost:11434`, computing real-time, unstructured agent behaviors on the fly. 
+2. **Local Live AI (`main` branch)**: By running the repository locally via `main`, the dashboard dynamically interfaces directly with local LLMs (e.g., Ollama), computing real-time, unstructured agent behaviors on the fly.
 
 To switch back to live processing in the UI, simply restore `DecisionPipeline.tsx` to utilize `fetch('/api/simulate')` inside the `startSimulation` block.
 
@@ -33,7 +33,7 @@ To switch back to live processing in the UI, simply restore `DecisionPipeline.ts
 
 ### Prerequisites
 
-Ensure you have [Node.js](https://nodejs.org/) installed along with a local instance of [Ollama](https://ollama.com/) (running on port `11434`) if you intend to run live agent deliberations.
+Ensure you have [Node.js](https://nodejs.org/) installed along with a local instance of [Ollama](https://ollama.com/) if you intend to run live agent deliberations.
 
 ### Installation
 

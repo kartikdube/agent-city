@@ -16,7 +16,7 @@ export const Dashboard = ({ city }: DashboardProps) => {
   const metrics = Object.entries(city.metrics || {});
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-700">
+    <div className="space-y-6 md:space-y-8 animate-in fade-in duration-700">
       {/* Top Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="flex items-center gap-4">
@@ -24,8 +24,8 @@ export const Dashboard = ({ city }: DashboardProps) => {
             <Users size={24} />
           </div>
           <div>
-            <p className="text-sm text-slate-400">Population</p>
-            <p className="text-2xl font-bold">{city.population?.toLocaleString()}</p>
+            <p className="text-xs md:text-sm text-slate-400">Population</p>
+            <p className="text-xl md:text-2xl font-bold">{city.population?.toLocaleString()}</p>
           </div>
         </Card>
         
@@ -34,8 +34,8 @@ export const Dashboard = ({ city }: DashboardProps) => {
             <Landmark size={24} />
           </div>
           <div>
-            <p className="text-sm text-slate-400">Budget Surplus</p>
-            <p className="text-2xl font-bold text-emerald-400">
+            <p className="text-xs md:text-sm text-slate-400">Budget Surplus</p>
+            <p className="text-xl md:text-2xl font-bold text-emerald-400">
               ${(city.budget?.surplus / 1000000).toFixed(1)}M
             </p>
           </div>
@@ -46,8 +46,8 @@ export const Dashboard = ({ city }: DashboardProps) => {
             <Activity size={24} />
           </div>
           <div>
-            <p className="text-sm text-slate-400">Happiness Index</p>
-            <p className="text-2xl font-bold text-purple-400">
+            <p className="text-xs md:text-sm text-slate-400">Happiness Index</p>
+            <p className="text-xl md:text-2xl font-bold text-purple-400">
               {(city.metrics?.happiness * 100).toFixed(0)}%
             </p>
           </div>
@@ -58,8 +58,8 @@ export const Dashboard = ({ city }: DashboardProps) => {
             <TrendingUp size={24} />
           </div>
           <div>
-            <p className="text-sm text-slate-400">Revenue</p>
-            <p className="text-2xl font-bold">
+            <p className="text-xs md:text-sm text-slate-400">Revenue</p>
+            <p className="text-xl md:text-2xl font-bold">
               ${(city.budget?.revenue / 1000000).toFixed(1)}M
             </p>
           </div>
@@ -68,7 +68,7 @@ export const Dashboard = ({ city }: DashboardProps) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* District Overview */}
-        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {districts.map(([name, data]: [string, any], i) => (
             <motion.div
               key={name}
@@ -142,8 +142,8 @@ export const Dashboard = ({ city }: DashboardProps) => {
         {/* Infrastructure Quick View */}
         <Card>
          <CardTitle className="text-amber-400">Infrastructure Assets</CardTitle>
-         <div className="grid grid-cols-2 gap-4">
-            {Object.entries(city.infrastructure || {}).map(([name, val]: [string, any]) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+             {Object.entries(city.infrastructure || {}).map(([name, val]: [string, any]) => (
               <div key={name} className="p-3 rounded-lg border border-slate-700/20 bg-slate-800/10">
                 <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">{name}</p>
                 <p className="text-lg font-mono text-slate-200">{val}</p>

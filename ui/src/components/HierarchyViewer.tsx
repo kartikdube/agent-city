@@ -5,6 +5,7 @@ import { Card, Badge } from './ui-elements';
 import { User, Zap, Brain, Search, Crown, Building2, TrendingUp, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AGENT_REGISTRY } from '../lib/agent-names';
+import { X } from 'lucide-react';
 
 interface HierarchyViewerProps {
   government: any;
@@ -18,6 +19,14 @@ const BODY_CONFIG: Record<string, { icon: React.ReactNode; color: string; accent
 
 export const HierarchyViewer = ({ government }: HierarchyViewerProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1280); // xl breakpoint
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   if (!government) return null;
 
@@ -30,9 +39,9 @@ export const HierarchyViewer = ({ government }: HierarchyViewerProps) => {
     Object.values(agents).filter((a: any) => a.body === bodyName);
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 md:gap-8">
       {/* Tree */}
-      <div className="xl:col-span-3 space-y-10">
+      <div className="xl:col-span-3 space-y-6 md:space-y-10">
         {/* President */}
         <div className="flex justify-center">
           {president && (
@@ -50,7 +59,7 @@ export const HierarchyViewer = ({ government }: HierarchyViewerProps) => {
         </div>
 
         {/* Bodies */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {bodies.map((body: string, bodyIdx: number) => {
             const bodyAgents = getBodyAgents(body);
             const dm = bodyAgents.find((a: any) => a.role?.includes('Decision Maker'));
@@ -101,34 +110,69 @@ export const HierarchyViewer = ({ government }: HierarchyViewerProps) => {
         </div>
       </div>
 
-      {/* Detail Panel */}
-      <div className="xl:col-span-1">
-        <AnimatePresence mode="wait">
-          {selectedAgent ? (
-            <motion.div
-              key={selectedAgent.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              className="sticky top-8"
-            >
-              <AgentDetailPanel agent={selectedAgent} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="empty"
+      {/* Detail Panel - Desktop */}
+      {!isMobile && (
+        <div className="xl:col-span-1">
+          <AnimatePresence mode="wait">
+            {selectedAgent ? (
+              <motion.div
+                key={selectedAgent.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                className="xl:sticky xl:top-8"
+              >
+                <AgentDetailPanel agent={selectedAgent} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="h-full flex items-center justify-center border-2 border-dashed border-slate-800 rounded-2xl p-8 text-slate-600"
+              >
+                <div className="text-center">
+                  <Search className="mx-auto mb-4 opacity-20" size={40} />
+                  <p className="text-sm font-medium">Select an agent to view their cognitive profile</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {/* Mobile Modal */}
+      <AnimatePresence>
+        {isMobile && selectedAgent && (
+          <>
+            <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="h-full flex items-center justify-center border-2 border-dashed border-slate-800 rounded-2xl p-8 text-slate-600"
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedId(null)}
+              className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[60]"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="fixed inset-4 z-[70] flex items-center justify-center pointer-events-none"
             >
-              <div className="text-center">
-                <Search className="mx-auto mb-4 opacity-20" size={40} />
-                <p className="text-sm font-medium">Select an agent to view their cognitive profile</p>
+              <div className="bg-slate-900 border border-white/10 rounded-3xl w-full max-w-lg max-h-[80vh] overflow-y-auto pointer-events-auto shadow-2xl relative">
+                <button 
+                  onClick={() => setSelectedId(null)}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white"
+                >
+                  <X size={20} />
+                </button>
+                <div className="p-1">
+                   <AgentDetailPanel agent={selectedAgent} />
+                </div>
               </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -141,7 +185,7 @@ const PresidentNode = ({ agent, isSelected, onClick }: any) => {
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       onClick={onClick}
-      className={`relative flex items-center gap-4 px-8 py-4 rounded-2xl border transition-all duration-300 ${
+      className={`relative flex items-center gap-3 md:gap-4 px-4 md:px-8 py-3 md:py-4 rounded-2xl border transition-all duration-300 ${
         isSelected
           ? 'bg-amber-500/10 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.2)]'
           : 'bg-slate-800/40 border-amber-500/30 hover:border-amber-500/60'
@@ -150,12 +194,12 @@ const PresidentNode = ({ agent, isSelected, onClick }: any) => {
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-amber-500 text-black font-black rounded-full text-[9px] uppercase tracking-widest">
         Commander in Chief
       </div>
-      <div className="h-14 w-14 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-black text-lg border border-amber-500/30">
+      <div className="h-10 w-10 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-black text-sm md:text-lg border border-amber-500/30">
         {identity?.initial ?? 'EV'}
       </div>
       <div className="text-left">
-        <p className="text-base font-black text-white">{identity?.name ?? agent.id}</p>
-        <p className="text-xs text-amber-400 font-bold">{identity?.title ?? agent.role}</p>
+        <p className="text-sm md:text-base font-black text-white">{identity?.name ?? agent.id}</p>
+        <p className="text-[10px] md:text-xs text-amber-400 font-bold">{identity?.title ?? agent.role}</p>
         <p className="text-[10px] text-slate-600 font-mono mt-0.5">{agent.id}</p>
       </div>
       <Crown size={20} className="text-amber-500/40 ml-4" />

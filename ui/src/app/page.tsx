@@ -23,7 +23,7 @@ export default function Home() {
     try {
       // Simulate network delay for portfolio feel
       await new Promise(resolve => setTimeout(resolve, 800));
-      const response = await fetch(`./scenarios/${id}.json`);
+      const response = await fetch(`/scenarios/${id}.json`);
       const data = await response.json();
       setScenarioData(data);
       setSelectedScenarioId(id);
@@ -36,24 +36,23 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen bg-background text-slate-200 selection:bg-blue-500/30 flex flex-col overflow-hidden">
+    <div className="h-screen-dynamic bg-background text-slate-200 selection:bg-blue-500/30 flex flex-col overflow-hidden safe-top">
       {/* Navigation Header */}
       <header className="flex-shrink-0 sticky top-0 z-50 glass border-b border-white/10 bg-background/80 backdrop-blur-xl">
-        <div className="max-w-[1600px] mx-auto px-6 h-20 flex justify-between items-center">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 h-16 md:h-20 flex justify-between items-center">
           <div className="flex items-center gap-4 group cursor-pointer" onClick={() => setActiveTab('scenarios')}>
              <div className="h-11 w-11 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-[0_0_25px_rgba(37,99,235,0.4)] group-hover:scale-110 transition-transform duration-500">
                <Globe size={26} />
              </div>
              <div>
-               <h1 className="text-xl font-black tracking-tighter text-white uppercase leading-tight">AGENTCITY <span className="text-blue-500">LABS</span></h1>
+                <h1 className="text-sm md:text-xl font-black tracking-tighter text-white uppercase leading-tight">AGENTCITY <span className="text-blue-500">LABS</span></h1>
                <div className="flex items-center gap-1.5 opacity-60">
                   <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-[9px] uppercase font-black tracking-widest text-blue-400/80">multi agent city</span>
                </div>
              </div>
           </div>
-
-          <nav className="flex items-center gap-2 bg-slate-900/40 p-1.5 rounded-2xl border border-white/5 shadow-inner">
+          <nav className="flex items-center gap-1 md:gap-2 bg-slate-900/40 p-1 md:p-1.5 rounded-2xl border border-white/5 shadow-inner overflow-x-auto no-scrollbar">
              <TabButton 
                active={activeTab === 'scenarios'} 
                onClick={() => setActiveTab('scenarios')}
@@ -96,7 +95,7 @@ export default function Home() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-[1600px] mx-auto px-6 mt-8 w-full overflow-hidden flex flex-col">
+      <main className="flex-1 max-w-[1600px] mx-auto px-4 md:px-6 mt-4 md:mt-8 w-full overflow-hidden flex flex-col">
         <div className="flex-1 flex flex-col overflow-hidden pr-2">
         <AnimatePresence mode="wait">
           {activeTab === 'scenarios' ? (
@@ -120,25 +119,35 @@ export default function Home() {
             >
 
               {/* Sub-tabs for Setup */}
-              <div className="flex-shrink-0 flex items-center gap-10 border-b border-white/5 pb-1">
-                <SubTabButton 
-                  active={activeSubTab === 'dashboard'} 
-                  onClick={() => setActiveSubTab('dashboard')}
-                  icon={<LayoutGrid size={18} />}
-                  label="City Dashboard"
-                />
-                <SubTabButton 
-                  active={activeSubTab === 'hierarchy'} 
-                  onClick={() => setActiveSubTab('hierarchy')}
-                  icon={<Users size={18} />}
-                  label="Agent Hierarchy"
-                />
-                <SubTabButton 
-                  active={activeSubTab === 'policy'} 
-                  onClick={() => setActiveSubTab('policy')}
-                  icon={<Terminal size={18} />}
-                  label="Policy Workbench"
-                />
+              <div className="flex-shrink-0 flex items-center justify-between border-b border-white/5 pb-1 gap-4">
+                <div className="flex items-center gap-4 md:gap-10 overflow-x-auto no-scrollbar">
+                  <SubTabButton 
+                    active={activeSubTab === 'dashboard'} 
+                    onClick={() => setActiveSubTab('dashboard')}
+                    icon={<LayoutGrid size={18} />}
+                    label="City Dashboard"
+                  />
+                  <SubTabButton 
+                    active={activeSubTab === 'hierarchy'} 
+                    onClick={() => setActiveSubTab('hierarchy')}
+                    icon={<Users size={18} />}
+                    label="Agent Hierarchy"
+                  />
+                  <SubTabButton 
+                    active={activeSubTab === 'policy'} 
+                    onClick={() => setActiveSubTab('policy')}
+                    icon={<Terminal size={18} />}
+                    label="Policy Workbench"
+                  />
+                </div>
+
+                <button 
+                  onClick={() => setActiveTab('conversations')}
+                  className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/20 hover:border-blue-500 transition-all font-bold text-[10px] md:text-xs uppercase tracking-widest whitespace-nowrap mb-1 shadow-[0_0_15px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                >
+                  Go to Simulation
+                  <ChevronRight size={14} />
+                </button>
               </div>
 
               {/* View Components */}
@@ -172,7 +181,7 @@ const TabButton = ({ active, onClick, icon, label, disabled }: any) => (
   <button 
     onClick={onClick}
     disabled={disabled}
-    className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
+    className={`flex items-center gap-2 px-3 md:px-5 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all shrink-0 ${
       active 
         ? 'bg-blue-600 text-white shadow-lg' 
         : disabled 
@@ -181,7 +190,7 @@ const TabButton = ({ active, onClick, icon, label, disabled }: any) => (
     }`}
   >
     {icon}
-    {label}
+    <span className="hidden sm:inline">{label}</span>
   </button>
 );
 
@@ -193,7 +202,7 @@ const SubTabButton = ({ active, onClick, icon, label }: any) => (
     }`}
   >
     {icon}
-    {label}
+    <span className="text-[10px] md:text-sm">{label}</span>
     {active && (
       <motion.div 
         layoutId="underline" 

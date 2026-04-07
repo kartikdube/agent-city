@@ -40,14 +40,14 @@ export const PolicyWorkbench = ({ city }: PolicyWorkbenchProps) => {
   if (!city) return null;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Column 1: Policy Definition */}
       <div className="space-y-6">
         <Card className="border-blue-500/20 bg-blue-500/[0.02] h-full flex flex-col">
           <div className="flex justify-between items-start mb-6">
             <div>
               <Badge variant="info" className="mb-2">Active Strategic Draft</Badge>
-              <h2 className="text-2xl font-bold text-white tracking-tight leading-tight">{SHARED_POLICY.title}</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">{SHARED_POLICY.title}</h2>
               <p className="text-sm text-slate-400 mt-2 leading-relaxed">{SHARED_POLICY.summary}</p>
             </div>
             <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-400 shadow-[0_0_15px_rgba(56,189,248,0.1)]">
@@ -60,13 +60,13 @@ export const PolicyWorkbench = ({ city }: PolicyWorkbenchProps) => {
                 <p className="text-[10px] uppercase font-black text-slate-500 mb-1.5 flex items-center gap-2">
                   <TrendingDown size={12} className="text-emerald-500" /> Allocated Budget
                 </p>
-                <p className="text-xl font-mono font-black text-white">${SHARED_POLICY.budget}</p>
+                <p className="text-lg md:text-xl font-mono font-black text-white">${SHARED_POLICY.budget}</p>
              </div>
              <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 shadow-inner">
                 <p className="text-[10px] uppercase font-black text-slate-500 mb-1.5 flex items-center gap-2">
                   <Clock size={12} className="text-amber-500" /> Plan Horizon
                 </p>
-                <p className="text-xl font-mono font-black text-white">{SHARED_POLICY.horizon}</p>
+                <p className="text-lg md:text-xl font-mono font-black text-white">{SHARED_POLICY.horizon}</p>
              </div>
           </div>
 

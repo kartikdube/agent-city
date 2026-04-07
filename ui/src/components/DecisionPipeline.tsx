@@ -221,7 +221,7 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
   return (
     <div className="space-y-8 pb-20">
       {/* Control Bar */}
-      <div className="flex flex-wrap justify-between items-center gap-4 bg-slate-800/40 border border-white/10 p-5 rounded-2xl">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-6 bg-slate-800/40 border border-white/10 p-4 md:p-5 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className={`h-10 w-10 rounded-xl flex items-center justify-center transition-all flex-shrink-0 ${isSimulating ? 'bg-blue-500/20 text-blue-400 animate-pulse' : 'bg-slate-800 text-slate-500'}`}>
             <Sparkles size={20} />
@@ -245,13 +245,13 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
           </div>
         </div>
         
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           {allDone && (
             <button
               onClick={() => {}}
               disabled={true}
               title={IS_STATIC_DEMO ? "Saving is disabled in Static Demo Mode" : "Save as Static Log"}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 bg-slate-800/80 text-slate-500 cursor-not-allowed border border-white/5 shadow-none`}
+              className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 bg-slate-800/80 text-slate-500 cursor-not-allowed border border-white/5 shadow-none w-full sm:w-auto`}
             >
               <Save size={14} className="opacity-50" />
               Save as Static Log
@@ -261,7 +261,7 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
           <button
             onClick={startSimulation}
             disabled={isSimulating}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 ${
+            className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 w-full sm:w-auto ${
               isSimulating
                 ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
                 : 'bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(37,99,235,0.25)] active:scale-95'
@@ -288,7 +288,7 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
       )}
 
       {/* Row 1: 3 Sector Team Boxes */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 relative">
         {[0, 1, 2].map(i => (
           <TeamBox key={i} box={boxes[i]} isActive={currentStep === i} voteTotal={5} />
         ))}
@@ -315,7 +315,7 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
 
 // ... (Sub-components remain same)
 const VoteDots = ({ voteFor, voteTotal }: { voteFor: number; voteTotal: number }) => (
-  <div className="flex items-center gap-1.5 flex-wrap">
+  <div className="flex items-center gap-1.5 flex-wrap max-w-full">
     {Array.from({ length: voteTotal }, (_, i) => (
       <div key={i} className={`h-2 w-2 rounded-full ${i < voteFor ? 'bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.5)]' : 'bg-slate-700'}`} />
     ))}
@@ -380,7 +380,7 @@ const TeamBox = ({ box, isActive, voteTotal }: { box: LiveBox; isActive: boolean
         </div>
       </div>
 
-      <ChatScroll box={box} height={160} accentColor="blue" />
+      <ChatScroll box={box} height={140} accentColor="blue" />
 
       {isDone && box.result && (
         <div className="flex-shrink-0 border-t border-white/5 pt-3 mt-3 space-y-2">
@@ -448,7 +448,7 @@ const PresidentBox = ({ box, isActive, scenarioData }: { box: LiveBox; isActive:
   const isRejected = verdict.toUpperCase().includes('REJECTED');
 
   return (
-    <div className={`rounded-3xl border p-6 lg:p-8 relative overflow-hidden transition-all duration-500 ${
+    <div className={`rounded-3xl border p-5 md:p-6 lg:p-8 relative overflow-hidden transition-all duration-500 ${
       isActive ? 'ring-2 ring-amber-500 bg-amber-500/[0.06] border-amber-500/40' : 'bg-amber-500/[0.02] border-amber-500/20'
     }`}>
       <div className="absolute top-0 right-0 -translate-y-1/3 translate-x-1/4 h-64 w-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -457,7 +457,7 @@ const PresidentBox = ({ box, isActive, scenarioData }: { box: LiveBox; isActive:
         {/* Left: Reasoning */}
         <div className="flex-1 space-y-4 min-w-0">
           {/* Header */}
-          <div className="flex items-center gap-4 flex-shrink-0">
+          <div className="flex items-center gap-3 md:gap-4 flex-shrink-0">
             <div className={`h-12 w-12 rounded-2xl flex items-center justify-center font-black text-base flex-shrink-0 transition-all ${
               isActive ? 'bg-amber-500 text-black shadow-[0_0_20px_rgba(245,158,11,0.4)]' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
             }`}>
@@ -465,7 +465,7 @@ const PresidentBox = ({ box, isActive, scenarioData }: { box: LiveBox; isActive:
             </div>
             <div>
               <Badge variant="warning" className="mb-1 text-[9px]">Final Executive Order</Badge>
-              <h2 className="text-xl font-black text-white tracking-tighter">Mayor Elara Voss</h2>
+              <h2 className="text-lg md:text-xl font-black text-white tracking-tighter">Mayor Elara Voss</h2>
               <p className="text-[11px] text-amber-400">Mayor of Metroville</p>
             </div>
           </div>
