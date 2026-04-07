@@ -23,7 +23,7 @@ export default function Home() {
     try {
       // Simulate network delay for portfolio feel
       await new Promise(resolve => setTimeout(resolve, 800));
-      const response = await fetch(`/scenarios/${id}.json`);
+      const response = await fetch(`scenarios/${id}.json`);
       const data = await response.json();
       setScenarioData(data);
       setSelectedScenarioId(id);
