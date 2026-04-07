@@ -1,6 +1,5 @@
 # AgentCity Labs - Operations Center 🏙️🤖
 
-![AgentCity Dashboard Demo](./ui/public/scenarios/placeholder.jpg) <!-- Optional: Add a screenshot here later! -->
 
 > **AgentCity** is a dynamic, multi-agent simulation dashboard that allows users to model complex urban scenarios and observe how different governance styles (e.g., *People Pleasers*, *Fiscal Hawks*, *Power Players*, *Technocrats*) influence city-level metrics like traffic, budget, approval ratings, and housing.
 
@@ -31,21 +30,21 @@ Ensure you have [Node.js](https://nodejs.org/) installed along with a local inst
 ### Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/kartikdube/agent-city.git
    cd agent-city/ui
    ```
-
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
-
 3. **Start the development server**:
+
    ```bash
    npm run dev
    ```
-
 4. **Open your browser**:
    Navigate to [http://localhost:3000](http://localhost:3000) to view the Operations Center.
 
