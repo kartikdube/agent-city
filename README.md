@@ -14,6 +14,14 @@ Built with an immersive "Cyber-Industrial" aesthetic and an intuitive Next.js fr
 - 📈 **Real-Time Impact Projections**: Visualize how policies dynamically alter starting metrics based on the final verdict from the "Mayor" agent.
 - 🎨 **Sleek, Immersive UI**: Fully customized visual experience featuring rich dark modes, glassmorphism, glowing accents, and micro-animations to mimic a high-end operations center.
 
+## 🌐 Deployment (Static Demo vs. Local AI)
+
+**This repository exists in two primary states:**
+1. **[Static Demo (gh-pages)](https://github.com/kartikdube/agent-city/tree/static-demo)**: The currently deployed GitHub Pages version is a highly optimized, fully static demo. It replays pre-saved scenario data to simulate AI behavioral output without requiring a heavy GPU or live backend, ensuring 100% up-time and high compatibility across browsers.
+2. **Local Live AI (`main` branch)**: By running the repository locally via `main`, the dashboard dynamically interfaces directly with local LLMs (e.g., Ollama) hosted on `http://localhost:11434`, computing real-time, unstructured agent behaviors on the fly. 
+
+To switch back to live processing in the UI, simply restore `DecisionPipeline.tsx` to utilize `fetch('/api/simulate')` inside the `startSimulation` block.
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js (App Router), React 19

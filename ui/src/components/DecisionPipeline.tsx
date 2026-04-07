@@ -7,8 +7,8 @@ import {
   ArrowDown, Play, Loader2, Sparkles, CheckCircle2, XCircle, ThumbsUp, Save
 } from 'lucide-react';
 import { ScenarioData, PipelineBox, PipelineMessage } from '../types/scenario';
-import { SYSTEM_PROMPTS, parseOllamaResponse, ParsedBoxResult } from '../lib/prompts';
-import { AGENT_REGISTRY } from '../lib/agent-names';
+import { SYSTEM_PROMPTS, ParsedBoxResult } from '../lib/prompts';
+import { runStaticSimulationStream } from '../lib/simulation-provider';
 
 interface DecisionPipelineProps {
   scenarioData?: ScenarioData;
@@ -63,6 +63,8 @@ async function runStream(
   return full;
 }
 
+const IS_STATIC_DEMO = true;
+
 export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
   const [boxes, setBoxes] = useState<LiveBox[]>(make_idle());
   const [isSimulating, setIsSimulating] = useState(false);
@@ -101,15 +103,21 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
 
   const runStep = async (
     idx: number,
-    prompt: string,
     isPresident = false
   ): Promise<ParsedBoxResult> => {
     setCurrentStep(idx);
     setBoxState(idx, { state: 'streaming', streamText: '' });
 
     try {
-      const full = await runStream(prompt, chunk => appendChunk(idx, chunk));
-      const parsed = parseOllamaResponse(full, isPresident);
+      if (!scenarioData?.simulation_log?.boxes) {
+        throw new Error('No static simulation data available for this scenario.');
+      }
+      const staticBox = scenarioData.simulation_log.boxes[idx];
+      const parsed = await runStaticSimulationStream(
+        staticBox,
+        isPresident,
+        chunk => appendChunk(idx, chunk)
+      );
       setBoxState(idx, { state: 'done', result: parsed });
       return parsed;
     } catch (err) {
@@ -130,64 +138,19 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
 
     try {
       // ── Step 0: Infrastructure Team ──
-      const infTraits: Record<string, Record<string, number>> = {};
-      for (const id of ['E_INF1_01','E_INF1_02','E_INF1_03','E_INF1_04','E_INF1_05'])
-        infTraits[id] = agents[id]?.traits ?? {};
-      const infResult = await runStep(0,
-        SYSTEM_PROMPTS.SECTOR_TEAM('Infrastructure',
-          'Roads, transit lines, urban buffers, utility grids',
-          ['E_INF1_01','E_INF1_02','E_INF1_03','E_INF1_04','E_INF1_05'],
-          infTraits, POLICY)
-      );
-
+      const infResult = await runStep(0, false);
       // ── Step 1: Economic Dev Team ──
-      const ecoTraits: Record<string, Record<string, number>> = {};
-      for (const id of ['E_ECO2_01','E_ECO2_02','E_ECO2_03','E_ECO2_04','E_ECO2_05'])
-        ecoTraits[id] = agents[id]?.traits ?? {};
-      const ecoResult = await runStep(1,
-        SYSTEM_PROMPTS.SECTOR_TEAM('Economic Development',
-          'Budget surplus, tax revenue, business climate, employment',
-          ['E_ECO2_01','E_ECO2_02','E_ECO2_03','E_ECO2_04','E_ECO2_05'],
-          ecoTraits, POLICY)
-      );
-
+      const ecoResult = await runStep(1, false);
       // ── Step 2: Public Safety Team ──
-      const pubTraits: Record<string, Record<string, number>> = {};
-      for (const id of ['E_PUB3_01','E_PUB3_02','E_PUB3_03','E_PUB3_04','E_PUB3_05'])
-        pubTraits[id] = agents[id]?.traits ?? {};
-      const pubResult = await runStep(2,
-        SYSTEM_PROMPTS.SECTOR_TEAM('Public Safety',
-          'Pollution, emergency services, crime, community welfare',
-          ['E_PUB3_01','E_PUB3_02','E_PUB3_03','E_PUB3_04','E_PUB3_05'],
-          pubTraits, POLICY)
-      );
-
+      const pubResult = await runStep(2, false);
       // ── Step 3: Sector Heads ──
-      const headsResult = await runStep(3,
-        SYSTEM_PROMPTS.SECTOR_HEADS([
-          { name: 'Director Marcus Hale (Infrastructure)',  recommendation: infResult.recommendation },
-          { name: 'Director Priya Nair (Economic Dev.)',    recommendation: ecoResult.recommendation },
-          { name: 'Director Cole Reeves (Public Safety)',   recommendation: pubResult.recommendation },
-        ], POLICY)
-      );
-
+      const headsResult = await runStep(3, false);
       // ── Step 4: President ──
-      await runStep(4,
-        SYSTEM_PROMPTS.PRESIDENT(
-          [
-            { sector: 'Infrastructure',   recommendation: infResult.recommendation },
-            { sector: 'Economic Dev.',    recommendation: ecoResult.recommendation },
-            { sector: 'Public Safety',    recommendation: pubResult.recommendation },
-          ],
-          headsResult.recommendation,
-          POLICY
-        ),
-        true
-      );
+      await runStep(4, true);
 
     } catch (err: any) {
       console.error('Simulation error:', err);
-      setError(err?.message ?? 'Unknown error. Check that Ollama is running on port 11434.');
+      setError(err?.message ?? 'Unknown error occurred during simulation.');
     } finally {
       setIsSimulating(false);
       setCurrentStep(-1);
@@ -264,24 +227,34 @@ export const DecisionPipeline = ({ scenarioData }: DecisionPipelineProps) => {
             <Sparkles size={20} />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-white">Live Behavioral Simulation</h2>
-            <p className="text-[11px] text-slate-500">19 agents deliberating sequentially · Powered by <span className="text-blue-400 font-bold">gpt-oss:20b</span></p>
+            <div className="flex items-center gap-2 mb-0.5">
+              <h2 className="text-lg font-bold text-white">Simulation Pipeline</h2>
+              {IS_STATIC_DEMO && (
+                <Badge variant="warning" className="animate-pulse bg-amber-500/20 text-amber-400 border border-amber-500/30 font-black">
+                  STATIC DEMO MODE
+                </Badge>
+              )}
+            </div>
+            <p className="text-[11px] text-slate-500">
+              {IS_STATIC_DEMO ? (
+                'Replaying static timeline. Check the main branch for full local LLM implementation.'
+              ) : (
+                '19 agents deliberating sequentially · Powered by <span className="text-blue-400 font-bold">gpt-oss:20b</span>'
+              )}
+            </p>
           </div>
         </div>
         
         <div className="flex gap-3">
           {allDone && (
             <button
-              onClick={handleSaveSimulation}
-              disabled={isSaving}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 ${
-                isSaving
-                  ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                  : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.25)]'
-              }`}
+              onClick={() => {}}
+              disabled={true}
+              title={IS_STATIC_DEMO ? "Saving is disabled in Static Demo Mode" : "Save as Static Log"}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-xs transition-all flex-shrink-0 bg-slate-800/80 text-slate-500 cursor-not-allowed border border-white/5 shadow-none`}
             >
-              {isSaving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-              {isSaving ? 'Saving...' : 'Save as Static Log'}
+              <Save size={14} className="opacity-50" />
+              Save as Static Log
             </button>
           )}
           
