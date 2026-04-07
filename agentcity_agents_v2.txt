@@ -1,0 +1,61 @@
+AGENTCITY - 19 AGENTS
+==================================================
+
+PRESIDENT: President
+Traits: {'vision': 0.72, 'authoritarianism': 0.22, 'popularity': 0.61}
+
+E_INF1_01: Analyst (Infrastructure)
+Traits: {'competence': 0.51, 'loyalty': 0.58, 'risk_tolerance': 0.12}
+
+E_INF1_02: Analyst (Infrastructure)
+Traits: {'competence': 0.8, 'loyalty': 0.2, 'risk_tolerance': 0.74}
+
+E_INF1_03: Analyst (Infrastructure)
+Traits: {'competence': 0.45, 'loyalty': 0.27, 'risk_tolerance': 0.78}
+
+E_INF1_04: Analyst (Infrastructure)
+Traits: {'competence': 0.59, 'loyalty': 0.61, 'risk_tolerance': 0.76}
+
+E_INF1_05: Analyst (Infrastructure)
+Traits: {'competence': 0.51, 'loyalty': 0.42, 'risk_tolerance': 0.16}
+
+DM_INF1: Decision Maker (Infrastructure)
+Traits: {'expertise': 0.83, 'ambition': 0.71, 'president_relationship': 0.89}
+
+E_ECO2_01: Analyst (Economic Development)
+Traits: {'competence': 0.49, 'loyalty': 0.75, 'risk_tolerance': 0.23}
+
+E_ECO2_02: Analyst (Economic Development)
+Traits: {'competence': 0.82, 'loyalty': 0.78, 'risk_tolerance': 0.28}
+
+E_ECO2_03: Analyst (Economic Development)
+Traits: {'competence': 0.84, 'loyalty': 0.44, 'risk_tolerance': 0.62}
+
+E_ECO2_04: Analyst (Economic Development)
+Traits: {'competence': 0.68, 'loyalty': 0.4, 'risk_tolerance': 0.57}
+
+E_ECO2_05: Analyst (Economic Development)
+Traits: {'competence': 0.45, 'loyalty': 0.24, 'risk_tolerance': 0.19}
+
+DM_ECO2: Decision Maker (Economic Development)
+Traits: {'expertise': 0.67, 'ambition': 0.43, 'president_relationship': 0.55}
+
+E_PUB3_01: Analyst (Public Safety)
+Traits: {'competence': 0.74, 'loyalty': 0.6, 'risk_tolerance': 0.31}
+
+E_PUB3_02: Analyst (Public Safety)
+Traits: {'competence': 0.84, 'loyalty': 0.4, 'risk_tolerance': 0.5}
+
+E_PUB3_03: Analyst (Public Safety)
+Traits: {'competence': 0.7, 'loyalty': 0.31, 'risk_tolerance': 0.71}
+
+E_PUB3_04: Analyst (Public Safety)
+Traits: {'competence': 0.41, 'loyalty': 0.9, 'risk_tolerance': 0.8}
+
+E_PUB3_05: Analyst (Public Safety)
+Traits: {'competence': 0.44, 'loyalty': 0.56, 'risk_tolerance': 0.16}
+
+DM_PUB3: Decision Maker (Public Safety)
+Traits: {'expertise': 0.95, 'ambition': 0.62, 'president_relationship': 0.93}
+
+Total: 19 agents generated

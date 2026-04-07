@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "id": "green-industrial-pivot",
+    "title": "Green Industrial Pivot",
+    "description": "High pollution levels in Industrial East are causing unrest in Residential North. Revitalize the city's air quality.",
+    "policy_goal": "Reduce industrial pollution score by 20% while maintaining manufacturing output.",
+    "tags": ["Environment", "Industrial", "High Difficulty"],
+    "status": "In Progress"
+  },
+  "initial_city_state": {
+    "name": "Metroville",
+    "population": 255000,
+    "districts": {
+      "Residential North": { "housing_stock": 82000, "occupancy": 0.88, "avg_price": 2400, "complaints": "severe smog" },
+      "Downtown Commercial": { "businesses": 4600, "jobs": 98000, "traffic_index": 0.82, "revenue": 290000000 },
+      "Industrial East": { "factories": 150, "pollution_index": 0.85, "jobs": 32000, "tax_revenue": 95000000 }
+    },
+    "budget": { "revenue": 480000000, "expenses": 460000000, "surplus": 20000000 },
+    "infrastructure": { "roads": "saturated", "transit_lines": 3, "hospitals": 8, "schools": 45, "police_stations": 12 },
+    "metrics": { "happiness": 0.52, "unemployment": 0.05, "traffic_congestion": 0.85, "pollution": 0.85, "housing_affordability": 0.38 },
+    "issues": ["Extreme pollution levels in Industrial East", "Rising respiratory complaints in Residential North", "Traffic gridlock on East-West expressways"]
+  },
+  "government_structure": {
+    "president": "PRESIDENT",
+    "bodies": ["Infrastructure", "Economic Development", "Public Safety"],
+    "agents": {
+       "PRESIDENT": { "id": "PRESIDENT", "role": "President", "traits": { "vision": 0.85, "authoritarianism": 0.12, "popularity": 0.45, "bias": -0.05 } },
+       "DM_INF1": { "id": "DM_INF1", "role": "Decision Maker (Infrastructure)", "body": "Infrastructure", "traits": { "expertise": 0.9, "ambition": 0.6, "president_relationship": 0.75, "decisiveness": 0.6 } }
+    }
+  }
+}

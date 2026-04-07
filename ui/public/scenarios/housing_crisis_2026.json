@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "id": "housing-crisis-2026",
+    "title": "The Housing Crisis",
+    "description": "Rapid population growth has outpaced residential construction. Homelessness is rising and young professionals are leaving.",
+    "policy_goal": "Increase housing stock by 15,000 units and improve affordability index to 0.6.",
+    "tags": ["Social", "Residential", "Medium Difficulty"],
+    "status": "Critical"
+  },
+  "initial_city_state": {
+    "name": "Metroville",
+    "population": 285000,
+    "districts": {
+      "Residential North": { "housing_stock": 80000, "occupancy": 0.99, "avg_price": 3100, "complaints": "homeless encampments" },
+      "Downtown Commercial": { "businesses": 4800, "jobs": 105000, "traffic_index": 0.85, "revenue": 310000000 },
+      "Industrial East": { "factories": 125, "pollution_index": 0.55, "jobs": 30000, "tax_revenue": 88000000 }
+    },
+    "budget": { "revenue": 490000000, "expenses": 470000000, "surplus": 20000000 },
+    "infrastructure": { "roads": "adequate", "transit_lines": 4, "hospitals": 8, "schools": 48, "police_stations": 14 },
+    "metrics": { "happiness": 0.45, "unemployment": 0.04, "traffic_congestion": 0.78, "pollution": 0.45, "housing_affordability": 0.22 },
+    "issues": ["Affordability index at all-time low (0.22)", "Residential North occupancy at 99%", "Rising public safety concerns in housing-scarce areas"]
+  },
+  "government_structure": {
+    "president": "PRESIDENT",
+    "bodies": ["Infrastructure", "Economic Development", "Public Safety"],
+    "agents": {
+       "PRESIDENT": { "id": "PRESIDENT", "role": "President", "traits": { "vision": 0.5, "authoritarianism": 0.4, "popularity": 0.3, "bias": 0.1 } }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "integrated-mobility-affordability-plan",
+  "title": "Integrated Mobility and Affordability Plan",
+  "executive_summary": "Reduce downtown traffic congestion, improve housing access, and protect the city budget without worsening pollution.",
+  "policy_goal": {
+    "statement": "Reduce weekday downtown traffic congestion by 20% within 18 months, improve housing access for working residents, and keep the city's annual operating budget in surplus.",
+    "target_horizon_months": 18
+  },
+  "problem_statement": "Metroville has heavy peak-hour congestion downtown, rising housing costs, aging transit infrastructure, and pollution spillover from Industrial East into Residential North. These linked pressures affect mobility, affordability, health, and public trust in city governance.",
+  "objectives": [
+    "Cut congestion by 20%.",
+    "Improve commuting time for working residents.",
+    "Increase housing affordability near jobs and transit.",
+    "Avoid turning the current budget surplus into a structural deficit.",
+    "Reduce pollution exposure in residential areas."
+  ],
+  "policy_package": [
+    {
+      "id": "transit-upgrade",
+      "title": "Transit upgrade",
+      "description": "Modernize one major bus corridor and add one express shuttle connection between Residential North and Downtown Commercial."
+    },
+    {
+      "id": "parking-reform",
+      "title": "Parking reform",
+      "description": "Raise downtown parking prices during peak hours and convert selected curb space into bus priority lanes."
+    },
+    {
+      "id": "housing-incentive",
+      "title": "Housing incentive",
+      "description": "Allow mid-rise mixed-use housing near transit nodes with affordability requirements for part of the new stock."
+    },
+    {
+      "id": "industrial-mitigation",
+      "title": "Industrial mitigation",
+      "description": "Require emissions-control upgrades for the highest-polluting industrial sites and add green buffers near Residential North."
+    },
+    {
+      "id": "public-communication-campaign",
+      "title": "Public communication campaign",
+      "description": "Explain the short-term disruption, expected benefits, and timeline to residents and businesses."
+    }
+  ],
+  "budget": {
+    "first_year_public_spending_cap": 22000000,
+    "funding_source": "Current city surplus",
+    "tax_policy": "No new broad-based tax increase in year one"
+  },
+  "constraints": [
+    "No citywide income tax increase.",
+    "No mass layoffs in city departments.",
+    "Maintain annual budget surplus if possible.",
+    "Avoid policies that sharply increase commute burdens for low-income workers.",
+    "Deliver visible public progress within 12 months."
+  ],
+  "stakeholders": [
+    "Commuters and working families",
+    "Downtown businesses",
+    "Industrial employers",
+    "Residents of Residential North",
+    "Transit riders",
+    "City budget office and elected leadership"
+  ],
+  "key_tradeoffs": [
+    "Better transit and affordability may require upfront capital spending.",
+    "Parking reform can reduce congestion but may trigger business opposition.",
+    "Industrial mitigation improves health but can create employer resistance.",
+    "Housing near transit improves access but may face neighborhood pushback."
+  ],
+  "implementation_timeline": [
+    {
+      "phase": "0\u20133 months",
+      "actions": [
+        "Approve package",
+        "Announce communication plan",
+        "Finalize corridor and zoning targets"
+      ]
+    },
+    {
+      "phase": "3\u20139 months",
+      "actions": [
+        "Begin lane conversion",
+        "Launch express shuttle pilot",
+        "Adopt housing incentive rules"
+      ]
+    },
+    {
+      "phase": "9\u201318 months",
+      "actions": [
+        "Complete first transit improvements",
+        "Begin industrial mitigation upgrades",
+        "Publish outcome dashboard"
+      ]
+    }
+  ],
+  "success_metrics": [
+    "Traffic congestion index",
+    "Average commute time",
+    "Transit ridership",
+    "Housing affordability near transit",
+    "Pollution exposure in Residential North",
+    "Net budget impact after 12 and 18 months"
+  ]
+}

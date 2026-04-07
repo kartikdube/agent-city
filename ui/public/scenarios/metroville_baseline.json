@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "id": "metroville-baseline",
+    "title": "Metroville: Standard Operations",
+    "description": "The baseline configuration of Metroville. A balanced city facing moderate traffic and pollution challenges.",
+    "policy_goal": "Maintain stability while addressing minor infrastructure aging and traffic congestion.",
+    "tags": ["Baseline", "Balanced", "Moderate Difficulty"],
+    "status": "Stable"
+  },
+  "initial_city_state": {
+    "name": "Metroville",
+    "population": 250000,
+    "districts": {
+      "Residential North": {
+        "housing_stock": 80000,
+        "occupancy": 0.92,
+        "avg_price": 2200,
+        "complaints": "pollution spillover"
+      },
+      "Downtown Commercial": {
+        "businesses": 4500,
+        "jobs": 95000,
+        "traffic_index": 0.78,
+        "revenue": 280000000
+      },
+      "Industrial East": {
+        "factories": 120,
+        "pollution_index": 0.65,
+        "jobs": 28000,
+        "tax_revenue": 85000000
+      }
+    },
+    "budget": {
+      "revenue": 450000000,
+      "expenses": 420000000,
+      "surplus": 30000000
+    },
+    "infrastructure": {
+      "roads": "adequate (75% capacity)",
+      "transit_lines": 3,
+      "hospitals": 8,
+      "schools": 45,
+      "police_stations": 12
+    },
+    "metrics": {
+      "happiness": 0.68,
+      "unemployment": 0.07,
+      "traffic_congestion": 0.72,
+      "pollution": 0.38,
+      "housing_affordability": 0.45
+    },
+    "issues": [
+      "Traffic congestion in downtown peak hours (72%)",
+      "Housing prices rising 12% year-over-year",
+      "Industrial pollution affecting Residential North",
+      "Budget surplus but aging transit infrastructure"
+    ]
+  },
+  "government_structure": {
+    "president": "PRESIDENT",
+    "bodies": ["Infrastructure", "Economic Development", "Public Safety"],
+    "agents": {
+      "PRESIDENT": { "id": "PRESIDENT", "role": "President", "traits": { "vision": 0.72, "authoritarianism": 0.22, "popularity": 0.61, "bias": -0.08 } },
+      "DM_INF1": { "id": "DM_INF1", "role": "Decision Maker (Infrastructure)", "body": "Infrastructure", "traits": { "expertise": 0.83, "ambition": 0.71, "president_relationship": 0.89, "decisiveness": 0.54 } },
+      "DM_ECO2": { "id": "DM_ECO2", "role": "Decision Maker (Economic Development)", "body": "Economic Development", "traits": { "expertise": 0.67, "ambition": 0.43, "president_relationship": 0.55, "decisiveness": 0.92 } },
+      "DM_PUB3": { "id": "DM_PUB3", "role": "Decision Maker (Public Safety)", "body": "Public Safety", "traits": { "expertise": 0.95, "ambition": 0.62, "president_relationship": 0.93, "decisiveness": 0.89 } }
+    }
+  }
+}

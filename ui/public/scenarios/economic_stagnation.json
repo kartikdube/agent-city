@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "id": "economic-stagnation",
+    "title": "Economic Stagnation",
+    "description": "The city's revenue has plummeted as legacy industries leave for cheaper markets. Unemployment is at its highest in a decade.",
+    "policy_goal": "Attract 500 new businesses and reduce unemployment to below 6%.",
+    "tags": ["Economic", "Industrial", "Medium Difficulty"],
+    "status": "Stagnant"
+  },
+  "initial_city_state": {
+    "name": "Metroville",
+    "population": 240000,
+    "districts": {
+      "Residential North": { "housing_stock": 80000, "occupancy": 0.85, "avg_price": 1800, "complaints": "unemployment benefits delay" },
+      "Downtown Commercial": { "businesses": 3200, "jobs": 75000, "traffic_index": 0.55, "revenue": 180000000 },
+      "Industrial East": { "factories": 85, "pollution_index": 0.35, "jobs": 18000, "tax_revenue": 55000000 }
+    },
+    "budget": { "revenue": 320000000, "expenses": 420000000, "surplus": -100000000 },
+    "infrastructure": { "roads": "adequate", "transit_lines": 3, "hospitals": 8, "schools": 45, "police_stations": 12 },
+    "metrics": { "happiness": 0.42, "unemployment": 0.16, "traffic_congestion": 0.45, "pollution": 0.32, "housing_affordability": 0.65 },
+    "issues": ["Budget deficit of $100M", "Unemployment rate surging to 16.2%", "Downward spiral in tax revenue from Downtown"]
+  },
+  "government_structure": {
+    "president": "PRESIDENT",
+    "bodies": ["Infrastructure", "Economic Development", "Public Safety"],
+    "agents": {
+       "PRESIDENT": { "id": "PRESIDENT", "role": "President", "traits": { "vision": 0.45, "authoritarianism": 0.2, "popularity": 0.28, "bias": 0.05 } }
+    }
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "metadata": {
+    "id": "people_pleasers",
+    "title": "People Pleasers",
+    "description": "A government that prioritizes public approval and immediate happiness above all else.",
+    "behavior_summary": "High empathy and popularity focus. Low budget discipline and long-term planning.",
+    "governance_style": "Likely to approve popular but expensive policies without questioning costs.",
+    "tags": [
+      "Social",
+      "Populist",
+      "Easy"
+    ]
+  },
+  "initial_city_state": {
+    "name": "Metroville",
+    "population": 250000,
+    "districts": {
+      "Residential North": {
+        "housing_stock": 80000,
+        "occupancy": 0.92,
+        "avg_price": 2200,
+        "complaints": "pollution spillover"
+      },
+      "Downtown Commercial": {
+        "businesses": 4500,
+        "jobs": 95000,
+        "traffic_index": 0.78,
+        "revenue": 280000000
+      },
+      "Industrial East": {
+        "factories": 120,
+        "pollution_index": 0.65,
+        "jobs": 28000,
+        "tax_revenue": 85000000
+      }
+    },
+    "budget": {
+      "revenue": 450000000,
+      "expenses": 420000000,
+      "surplus": 30000000
+    },
+    "infrastructure": {
+      "roads": "adequate (75% capacity)",
+      "transit_lines": 3,
+      "hospitals": 8,
+      "schools": 45,
+      "police_stations": 12
+    },
+    "metrics": {
+      "happiness": 0.68,
+      "unemployment": 0.07,
+      "traffic_congestion": 0.72,
+      "pollution": 0.58,
+      "housing_affordability": 0.45
+    },
+    "issues": [
+      "Traffic congestion in downtown peak hours (72%)",
+      "Housing prices rising 12% year-over-year",
+      "Industrial pollution affecting Residential North",
+      "Budget surplus but aging transit infrastructure"
+    ]
+  },
+  "government_structure": {
+    "president": "PRESIDENT",
+    "bodies": [
+      "Infrastructure",
+      "Economic Development",
+      "Public Safety"
+    ],
+    "agents": {
+      "PRESIDENT": {
+        "id": "PRESIDENT",
+        "role": "President",
+        "traits": {
+          "vision": 0.5,
+          "authoritarianism": 0.1,
+          "popularity": 0.9,
+          "empathy": 0.95
+        }
+      },
+      "E_INF1_01": {
+        "id": "E_INF1_01",
+        "role": "Analyst",
+        "body": "Infrastructure",
+        "traits": {
+          "competence": 0.51,
+          "loyalty": 0.58,
+          "risk_tolerance": 0.12,
+          "empathy": 0.65
+        }
+      },
+      "E_INF1_02": {
+        "id": "E_INF1_02",
+        "role": "Analyst",
+        "body": "Infrastructure",
+        "traits": {
+          "competence": 0.8,
+          "loyalty": 0.2,
+          "risk_tolerance": 0.74,
+          "empathy": 0.5
+        }
+      },
+      "E_INF1_03": {
+        "id": "E_INF1_03",
+        "role": "Analyst",
+        "body": "Infrastructure",
+        "traits": {
+          "competence": 0.45,
+          "loyalty": 0.27,
+          "risk_tolerance": 0.78,
+          "empathy": 0.88
+        }
+      },
+      "E_INF1_04": {
+        "id": "E_INF1_04",
+        "role": "Analyst",
+        "body": "Infrastructure",
+        "traits": {
+          "competence": 0.59,
+          "loyalty": 0.61,
+          "risk_tolerance": 0.76,
+          "empathy": 0.33
+        }
+      },
+      "E_INF1_05": {
+        "id": "E_INF1_05",
+        "role": "Analyst",
+        "body": "Infrastructure",
+        "traits": {
+          "competence": 0.51,
+          "loyalty": 0.42,
+          "risk_tolerance": 0.16,
+          "empathy": 0.52
+        }
+      },
+      "DM_INF1": {
+        "id": "DM_INF1",
+        "role": "Decision Maker (Infrastructure)",
+        "body": "Infrastructure",
+        "traits": {
+          "expertise": 0.3,
+          "ambition": 0.2,
+          "decisiveness": 0.4,
+          "empathy": 0.9,
+          "public_focus": 0.95
+        },
+        "employees": [
+          "E_INF1_01",
+          "E_INF1_02",
+          "E_INF1_03",
+          "E_INF1_04",
+          "E_INF1_05"
+        ]
+      },
+      "E_ECO2_01": {
+        "id": "E_ECO2_01",
+        "role": "Analyst",
+        "body": "Economic Development",
+        "traits": {
+          "competence": 0.49,
+          "loyalty": 0.75,
+          "risk_tolerance": 0.23,
+          "empathy": 0.71
+        }
+      },
+      "E_ECO2_02": {
+        "id": "E_ECO2_02",
+        "role": "Analyst",
+        "body": "Economic Development",
+        "traits": {
+          "competence": 0.82,
+          "loyalty": 0.78,
+          "risk_tolerance": 0.28,
+          "empathy": 0.87
+        }
+      },
+      "E_ECO2_03": {
+        "id": "E_ECO2_03",
+        "role": "Analyst",
+        "body": "Economic Development",
+        "traits": {
+          "competence": 0.84,
+          "loyalty": 0.44,
+          "risk_tolerance": 0.62,
+          "empathy": 0.45
+        }
+      },
+      "E_ECO2_04": {
+        "id": "E_ECO2_04",
+        "role": "Analyst",
+        "body": "Economic Development",
+        "traits": {
+          "competence": 0.68,
+          "loyalty": 0.4,
+          "risk_tolerance": 0.57,
+          "empathy": 0.61
+        }
+      },
+      "E_ECO2_05": {
+        "id": "E_ECO2_05",
+        "role": "Analyst",
+        "body": "Economic Development",
+        "traits": {
+          "competence": 0.45,
+          "loyalty": 0.24,
+          "risk_tolerance": 0.19,
+          "empathy": 0.53
+        }
+      },
+      "DM_ECO2": {
+        "id": "DM_ECO2",
+        "role": "Decision Maker (Economic Development)",
+        "body": "Economic Development",
+        "traits": {
+          "expertise": 0.4,
+          "ambition": 0.5,
+          "decisiveness": 0.3,
+          "empathy": 0.85,
+          "public_focus": 0.9
+        },
+        "employees": [
+          "E_ECO2_01",
+          "E_ECO2_02",
+          "E_ECO2_03",
+          "E_ECO2_04",
+          "E_ECO2_05"
+        ]
+      },
+      "E_PUB3_01": {
+        "id": "E_PUB3_01",
+        "role": "Analyst",
+        "body": "Public Safety",
+        "traits": {
+          "competence": 0.74,
+          "loyalty": 0.6,
+          "risk_tolerance": 0.31,
+          "empathy": 0.87
+        }
+      },
+      "E_PUB3_02": {
+        "id": "E_PUB3_02",
+        "role": "Analyst",
+        "body": "Public Safety",
+        "traits": {
+          "competence": 0.84,
+          "loyalty": 0.4,
+          "risk_tolerance": 0.5,
+          "empathy": 0.68
+        }
+      },
+      "E_PUB3_03": {
+        "id": "E_PUB3_03",
+        "role": "Analyst",
+        "body": "Public Safety",
+        "traits": {
+          "competence": 0.7,
+          "loyalty": 0.31,
+          "risk_tolerance": 0.71,
+          "empathy": 0.49
+        }
+      },
+      "E_PUB3_04": {
+        "id": "E_PUB3_04",
+        "role": "Analyst",
+        "body": "Public Safety",
+        "traits": {
+          "competence": 0.41,
+          "loyalty": 0.9,
+          "risk_tolerance": 0.8,
+          "empathy": 0.87
+        }
+      },
+      "E_PUB3_05": {
+        "id": "E_PUB3_05",
+        "role": "Analyst",
+        "body": "Public Safety",
+        "traits": {
+          "competence": 0.44,
+          "loyalty": 0.56,
+          "risk_tolerance": 0.16,
+          "empathy": 0.63
+        }
+      },
+      "DM_PUB3": {
+        "id": "DM_PUB3",
+        "role": "Decision Maker (Public Safety)",
+        "body": "Public Safety",
+        "traits": {
+          "expertise": 0.5,
+          "ambition": 0.3,
+          "decisiveness": 0.2,
+          "empathy": 0.9,
+          "public_focus": 0.98
+        },
+        "employees": [
+          "E_PUB3_01",
+          "E_PUB3_02",
+          "E_PUB3_03",
+          "E_PUB3_04",
+          "E_PUB3_05"
+        ]
+      }
+    }
+  },
+  "simulation_log": {
+    "boxes": [
+      {
+        "id": "team_1",
+        "title": "Infrastructure Team",
+        "duration": "1-min deliberation",
+        "transcript": [
+          {
+            "agent_id": "E_INF1_01",
+            "name": "Anna Brennan",
+            "role": "Transit Systems Analyst",
+            "content": "I worry that the new transit lines will displace current residents and widen inequality—this plan must protect vulnerable communities."
+          },
+          {
+            "agent_id": "E_INF1_02",
+            "name": "Luis Ortiz",
+            "role": "Urban Planning Analyst",
+            "content": "Based on traffic modeling, integrating roads and transit actually reduces congestion and lowers emissions, and the cost projections are realistic."
+          },
+          {
+            "agent_id": "E_INF1_03",
+            "name": "Fatima Aziz",
+            "role": "Road Capacity Analyst",
+            "content": "But even with lower emissions, the cost to residents could increase; we need an affordability buffer and subsidies to keep it inclusive."
+          },
+          {
+            "agent_id": "E_INF1_04",
+            "name": "Tom Fields",
+            "role": "Utilities & Grid Analyst",
+            "content": "We're already behind schedule; the plan's bold approach is the only way to meet the 2030 targets—risk is acceptable."
+          },
+          {
+            "agent_id": "E_INF1_05",
+            "name": "Yuki Tanaka",
+            "role": "Environmental Buffers Analyst",
+            "content": "What if we start with a phased pilot, monitor utility grid impacts, and adjust the affordability measures accordingly?"
+          },
+          {
+            "agent_id": "E_INF1_01",
+            "name": "Anna Brennan",
+            "role": "Transit Systems Analyst",
+            "content": "I can support a pilot, but it must include a community review board to address displacement concerns."
+          },
+          {
+            "agent_id": "E_INF1_02",
+            "name": "Luis Ortiz",
+            "role": "Urban Planning Analyst",
+            "content": "The pilot will give us data to refine the models—let's proceed."
+          }
+        ],
+        "recommendation": "We support the Integrated Mobility and Affordability Plan, provided a phased pilot and community safeguards are implemented to ensure affordability and equity.",
+        "summary": "The team's main concern is balancing the plan's ambitious infrastructure upgrades with the need to protect vulnerable communities and utility grid resilience.",
+        "status": "neutral"
+      },
+      {
+        "id": "team_2",
+        "title": "Economic Dev. Team",
+        "duration": "1-min deliberation",
+        "transcript": [
+          {
+            "agent_id": "E_ECO2_01",
+            "name": "Sam Park",
+            "role": "Business Growth Analyst",
+            "content": "I'm inclined to support the plan because it leverages our budget surplus to enhance mobility, but we need to ensure tax revenue isn’t eroded."
+          },
+          {
+            "agent_id": "E_ECO2_02",
+            "name": "Dara Osei",
+            "role": "Tax Revenue Analyst",
+            "content": "I agree on the mobility benefits, but we should prioritize job creation; the plan must bring measurable employment growth to justify the spend."
+          },
+          {
+            "agent_id": "E_ECO2_03",
+            "name": "Ingrid Holm",
+            "role": "Budget & Surplus Analyst",
+            "content": "The plan's fiscal projections look solid, but I'm concerned about long‑term debt; a modest risk is acceptable, but we need a contingency."
+          },
+          {
+            "agent_id": "E_ECO2_04",
+            "name": "Wei Zhang",
+            "role": "Investment Climate Analyst",
+            "content": "I see the benefits, but the projected tax revenue gains are uncertain; we risk missing budget targets if we overcommit."
+          },
+          {
+            "agent_id": "E_ECO2_05",
+            "name": "Rosa Mendez",
+            "role": "Labor Market Analyst",
+            "content": "It sounds promising, but I'm worried it could be too expensive for small businesses; maybe we should hold off until we see clearer ROI."
+          },
+          {
+            "agent_id": "E_ECO2_01",
+            "name": "Sam Park",
+            "role": "Business Growth Analyst",
+            "content": "Rosa's point about small businesses is valid; perhaps we can phase the program and keep a buffer in the surplus."
+          },
+          {
+            "agent_id": "E_ECO2_02",
+            "name": "Dara Osei",
+            "role": "Tax Revenue Analyst",
+            "content": "Phasing is wise, and with a strong monitoring plan, we can align business climate, tax revenue, and employment targets."
+          }
+        ],
+        "recommendation": "We recommend supporting the policy with a phased implementation to safeguard budget surplus and ensure tax revenue stability.",
+        "summary": "The team's main concern is balancing budget surplus use with safeguarding tax revenue and protecting small businesses.",
+        "status": "neutral"
+      },
+      {
+        "id": "team_3",
+        "title": "Public Safety Team",
+        "duration": "1-min deliberation",
+        "transcript": [
+          {
+            "agent_id": "E_PUB3_01",
+            "name": "Kai Jensen",
+            "role": "Emergency Services Analyst",
+            "content": "The plan’s emphasis on affordable transit could reduce traffic pollution, but we need to ensure that emergency services aren’t delayed by congestion."
+          },
+          {
+            "agent_id": "E_PUB3_02",
+            "name": "Meera Patel",
+            "role": "Pollution & Health Analyst",
+            "content": "Data shows that integrated mobility improves response times in low‑crime areas, but we need a comprehensive model that includes high‑density zones."
+          },
+          {
+            "agent_id": "E_PUB3_03",
+            "name": "Derek Walsh",
+            "role": "Crime & Safety Analyst",
+            "content": "I’m concerned that expanding transit routes might expose first responders to more traffic hazards; we should assess risk before approving."
+          },
+          {
+            "agent_id": "E_PUB3_04",
+            "name": "Lily Chen",
+            "role": "Community Welfare Analyst",
+            "content": "Given the city’s history, I believe we should adopt the plan—it aligns with our commitment to community welfare and will lower overall crime through increased mobility."
+          },
+          {
+            "agent_id": "E_PUB3_05",
+            "name": "Omar Farouk",
+            "role": "Disaster Resilience Analyst",
+            "content": "I’m not convinced; higher mobility could actually increase crime rates if not paired with proper policing; we need to be cautious."
+          },
+          {
+            "agent_id": "E_PUB3_01",
+            "name": "Kai Jensen",
+            "role": "Emergency Services Analyst",
+            "content": "Omar raises a valid point—maybe we can incorporate dedicated police lanes into the plan to address that risk."
+          },
+          {
+            "agent_id": "E_PUB3_02",
+            "name": "Meera Patel",
+            "role": "Pollution & Health Analyst",
+            "content": "Let’s pilot the plan in a few districts, monitor the impact on pollution, emergency response, and crime, and adjust accordingly."
+          }
+        ],
+        "recommendation": "Support the policy with a phased pilot that monitors emergency response times, pollution, and crime to mitigate risks.",
+        "summary": "The team’s main concern is ensuring that increased mobility does not compromise emergency response efficiency or community safety.",
+        "status": "neutral"
+      },
+      {
+        "id": "heads",
+        "title": "Sector Heads",
+        "duration": "5-min deliberation",
+        "transcript": [
+          {
+            "agent_id": "MARCUS",
+            "name": "Marcus",
+            "role": "Agent",
+            "content": "I support the plan, but only if we implement a phased pilot with community safeguards to keep affordability and equity."
+          },
+          {
+            "agent_id": "PRIYA",
+            "name": "Priya",
+            "role": "Agent",
+            "content": "Our recommendation is to support the plan with a phased implementation to protect the budget surplus and ensure stable tax revenue."
+          },
+          {
+            "agent_id": "COLE",
+            "name": "Cole",
+            "role": "Agent",
+            "content": "I also support the plan, but it must include a phased pilot that monitors emergency response times, pollution, and crime."
+          },
+          {
+            "agent_id": "MARCUS",
+            "name": "Marcus",
+            "role": "Agent",
+            "content": "I agree that safety monitoring is essential; let's propose integrated data dashboards for each phase."
+          },
+          {
+            "agent_id": "PRIYA",
+            "name": "Priya",
+            "role": "Agent",
+            "content": "And we should tie each phase to a fiscal review so we can adjust tax strategies accordingly."
+          },
+          {
+            "agent_id": "COLE",
+            "name": "Cole",
+            "role": "Agent",
+            "content": "With those safeguards, I think the plan can proceed; the phased approach balances growth with safety."
+          },
+          {
+            "agent_id": "MARCUS",
+            "name": "Marcus",
+            "role": "Agent",
+            "content": "Then we can reach consensus: approve with phased pilot, safeguards, and monitoring."
+          },
+          {
+            "agent_id": "PRIYA",
+            "name": "Priya",
+            "role": "Agent",
+            "content": "Yes, consensus achieved."
+          }
+        ],
+        "recommendation": "We recommend that the Mayor approve the Integrated Mobility and Affordability Plan with a phased pilot, community safeguards, and ongoing monitoring of affordability, fiscal impact, and public safety.",
+        "summary": "The heads agreed to prioritize a phased, safeguarded implementation that balances equity, fiscal stability, and safety.",
+        "status": "neutral"
+      },
+      {
+        "id": "pres_decision",
+        "title": "Presidential Review",
+        "duration": "Final Verdict",
+        "transcript": [
+          {
+            "agent_id": "PRESIDENT",
+            "name": "Mayor Elara Voss",
+            "role": "Mayor of Metroville",
+            "content": "I recognize the urgency of modernizing Metroville’s transportation while protecting our residents’ quality of life. The infrastructure team’s insistence on a phased pilot aligns with our goal of ensuring affordability and equity—critical for preventing displacement in high‑density neighborhoods. Economic Development’s caution about preserving the budget surplus and tax stability is sound; a staged rollout will let us monitor revenue impacts before full‑scale implementation. Public Safety’s request for continuous monitoring of emergency response times, pollution, and crime is essential to avoid unintended harm as new transit options emerge. The consensus among sector heads underscores that a balanced approach is the only path forward. By approving the plan with phased pilots, community safeguards, and robust monitoring, we give Metroville a chance to grow sustainably while keeping safety, fiscal responsibility, and housing affordability in check."
+          }
+        ],
+        "recommendation": "APPROVED - Phased pilot with safeguards ensures affordability, fiscal stability, and public safety.",
+        "summary": "The plan is expected to improve traffic flow and resident satisfaction while modestly tightening the budget and enhancing housing affordability.",
+        "status": "approved",
+        "stats": {
+          "traffic": "+5%",
+          "approval": "+10%",
+          "budget": "+$0M",
+          "housing": "+3%"
+        }
+      }
+    ]
+  }
+}
